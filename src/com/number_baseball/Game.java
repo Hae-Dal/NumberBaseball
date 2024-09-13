@@ -18,31 +18,30 @@ public class Game {
     }
 
     public void start() {
-        Scanner sc = new Scanner(System.in);
 
-        while (true) {
-            gv.displayMenu();
-            String s = sc.next();
-            try {
-                if (MENU.isValid(s)) {
-                    switch (s) {
-                        case "1" : {
-                            gc.start();
-                            break;
-                        }
-                        case "2" : {
-                            gc.showGameLog();
-                            break;
-                        }
-                        case "3" : {
-                            gc.end();
-                            break;
-                        }
+        try {
+            while (true) {
+                gv.displayMenu();
+                String s = gc.input(MENU);
+
+                switch (s) {
+                    case "1" : {
+                        gc.start();
+                        break;
+                    }
+                    case "2" : {
+                        gc.showGameLog();
+                        break;
+                    }
+                    case "3" : {
+                        gc.end();
+                        break;
                     }
                 }
-            } catch (IllegalInputException e) {
-                gv.displayException(e);
             }
+        } catch (Exception e) {
+            gv.displayException(e);
         }
+
     }
 }

@@ -1,13 +1,16 @@
 package com.number_baseball.controller;
 
+import com.number_baseball.enumeration.InputType;
 import com.number_baseball.enumeration.Status;
 import com.number_baseball.service.GameService;
 import com.number_baseball.view.GameView;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static com.number_baseball.enumeration.InputType.ANSWER;
+import static com.number_baseball.enumeration.InputType.MENU;
 import static com.number_baseball.enumeration.Status.*;
 
 public class GameController {
@@ -27,7 +30,7 @@ public class GameController {
 
         while (true) {
             gv.displayInputMessage("숫자를 입력하세요. ");
-            String input = input();
+            String input = input(ANSWER);
 
             if (input == null) {
                 continue;
@@ -40,19 +43,26 @@ public class GameController {
                 gs.addGameTryNum();
             } else {
                 gv.displayEndMessage();
-                break;
+                String s = input(MENU);
+                if (Objects.equals(s, "1")) {
+                    break;
+                } else if (Objects.equals(s, "2")) {
+                    gs.removeCurrentGame();
+                } else if (Objects.equals(s, "3")) {
+                    end();
+                }
             }
         }
 
     }
 
-    public String input() {
+    public String input(InputType type) {
         Scanner sc = new Scanner(System.in);
 
         String s = sc.next();
 
         try {
-            if (ANSWER.isValid(s)) {
+            if (type.isValid(s)) {
                 return s;
             }
         } catch (Exception e) {
