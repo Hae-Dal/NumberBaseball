@@ -1,4 +1,4 @@
-package view;
+package com.number_baseball.view;
 
 import java.util.List;
 
