@@ -7,10 +7,18 @@ import java.util.HashMap;
 import static com.number_baseball.enumeration.Status.*;
 
 public class GameView {
+
+    public void displayMenu() {
+        System.out.print("""
+                환영합니다! 원하시는 번호를 입력해주세요
+                1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기
+                """);
+    }
+
     public void displayGame() {
         System.out.println("""
-                < 게임 시작 >
-                """);
+               < 게임을 시작합니다 >
+               """);
     }
 
     public void displayInputResult(HashMap<Status, Integer> status) {
@@ -26,6 +34,6 @@ public class GameView {
     }
 
     public void displayEndMessage() {
-        System.out.println("정답입니다. 축하합니다!");
+        System.out.println("정답입니다. 축하합니다!\n");
     }
 }
