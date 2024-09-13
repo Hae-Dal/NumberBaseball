@@ -1,10 +1,14 @@
 package com.number_baseball.controller;
 
 import com.number_baseball.Exceptions.IllegalInputException;
+import com.number_baseball.enumeration.Status;
 import com.number_baseball.model.GameModel;
 import com.number_baseball.view.GameView;
 
+import java.util.HashMap;
 import java.util.Scanner;
+
+import static com.number_baseball.enumeration.Status.*;
 
 public class GameController {
     private final GameView gv;
@@ -16,7 +20,7 @@ public class GameController {
     }
 
     public void start() {
-        int[] status = { 0, 0, 0};
+        HashMap<Status, Integer> status;
 
         gv.displayGame();
 
@@ -26,7 +30,7 @@ public class GameController {
 
             status = isAnswer(input);
 
-            if (status[0] != 3) {
+            if (status.get(STRIKE) != 3) {
                 gv.displayInputResult(isAnswer(input));
             } else {
                 gv.displayEndMessage();
@@ -64,16 +68,20 @@ public class GameController {
         return s;
     }
 
-    public int[] isAnswer(String input) {
-        int[] status = { 0, 0, 0};
+    public HashMap<Status, Integer> isAnswer(String input) {
+        HashMap<Status, Integer> status = new HashMap<>();
+
+        status.put(STRIKE, 0);
+        status.put(BALL, 0);
+        status.put(OUT, 0);
 
         for (int j = 0; j < input.length(); j++) {
             if (gm.getAnswer().indexOf(input.charAt(j)) == -1) {
-                status[2] += 1;
+                status.put(OUT, status.get(OUT) + 1);
             } else if (gm.getAnswer().indexOf(input.charAt(j)) == j) {
-                status[0] += 1;
+                status.put(STRIKE, status.get(STRIKE) + 1);
             } else if (gm.getAnswer().indexOf(input.charAt(j)) != j) {
-                status[1] += 1;
+                status.put(BALL, status.get(BALL) + 1);
             }
         }
 
