@@ -1,5 +1,6 @@
 package com.number_baseball;
 
+import com.number_baseball.Exceptions.IllegalInputException;
 import com.number_baseball.controller.GameController;
 import com.number_baseball.view.GameView;
 
@@ -29,13 +30,17 @@ public class Game {
                             gc.start();
                             break;
                         }
+                        case "2" : {
+                            gc.showGameLog();
+                            break;
+                        }
                         case "3" : {
                             gc.end();
                             break;
                         }
                     }
                 }
-            } catch (Exception e) {
+            } catch (IllegalInputException e) {
                 gv.displayException(e);
             }
         }

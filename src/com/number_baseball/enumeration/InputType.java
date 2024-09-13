@@ -8,8 +8,8 @@ public enum InputType {
     MENU("menu") {
         @Override
         public boolean isValid(String s) {
-            if (!(Objects.equals(s, "1") || Objects.equals(s, "3"))) {
-                throw new IllegalArgumentException("1 또는 3을 입력해주세요.");
+            if (!(Objects.equals(s, "1") || Objects.equals(s,"2") || Objects.equals(s, "3"))) {
+                throw new IllegalInputException("1, 2, 3 중에 한가지를 입력해주세요.");
             }
             return true;
         }

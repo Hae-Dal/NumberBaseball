@@ -4,9 +4,11 @@ import java.util.Random;
 
 public class GameModel {
     private String answer;
+    private int tryNum;
     
     public GameModel() {
         init();
+        this.tryNum = 0;
     }
 
     // 게임 모델 초기화 함수
@@ -27,5 +29,13 @@ public class GameModel {
 
     public String getAnswer() {
         return answer;
+    }
+
+    public int getTryNum() {
+        return tryNum;
+    }
+
+    public void addTryNum() {
+        this.tryNum += 1;
     }
 }
