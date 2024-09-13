@@ -10,7 +10,7 @@ public class GameView {
     }
 
     public void displayInputResult(int[] status) {
-        System.out.println(status[0] + " 스트라이크, " + status[1] + " 볼" + status[2] + " 아웃");
+        System.out.println(status[0] + " 스트라이크 || " + status[1] + " 볼 || " + status[2] + " 아웃");
     }
 
     public void displayException(Exception e) {
