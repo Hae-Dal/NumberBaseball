@@ -1,7 +1,6 @@
 package com.number_baseball.controller;
 
 import com.number_baseball.enumeration.Status;
-import com.number_baseball.model.GameModel;
 import com.number_baseball.service.GameService;
 import com.number_baseball.view.GameView;
 

@@ -5,7 +5,7 @@ import com.number_baseball.Exceptions.IllegalInputException;
 import java.util.Objects;
 
 public enum InputType {
-    MENU("menu") {
+    MENU() {
         @Override
         public boolean isValid(String s) {
             if (!(Objects.equals(s, "1") || Objects.equals(s,"2") || Objects.equals(s, "3"))) {
@@ -15,7 +15,7 @@ public enum InputType {
         }
     },
 
-    ANSWER("answer") {
+    ANSWER() {
         @Override
         public boolean isValid(String s) {
             // 세 자리 수 인지 판별
@@ -41,7 +41,7 @@ public enum InputType {
         }
     };
 
-    InputType(String type) {
+    InputType() {
     }
 
     public abstract boolean isValid(String s);
