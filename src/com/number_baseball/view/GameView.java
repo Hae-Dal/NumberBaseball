@@ -1,6 +1,10 @@
 package com.number_baseball.view;
 
-import java.util.List;
+import com.number_baseball.enumeration.Status;
+
+import java.util.HashMap;
+
+import static com.number_baseball.enumeration.Status.*;
 
 public class GameView {
     public void displayGame() {
@@ -9,8 +13,8 @@ public class GameView {
                 """);
     }
 
-    public void displayInputResult(int[] status) {
-        System.out.println(status[0] + " 스트라이크 || " + status[1] + " 볼 || " + status[2] + " 아웃");
+    public void displayInputResult(HashMap<Status, Integer> status) {
+        System.out.println(status.get(STRIKE) + " 스트라이크 || " + status.get(BALL) + " 볼 || " + status.get(OUT) + " 아웃");
     }
 
     public void displayException(Exception e) {
