@@ -27,6 +27,11 @@ public class GameService {
         current++;
     }
 
+    public void removeCurrentGame() {
+        games.remove(games.get(current));
+        current--;
+    }
+
     public GameModel getCurrentGame() {
         return games.get(current);
     }

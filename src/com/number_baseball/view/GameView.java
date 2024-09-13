@@ -28,7 +28,8 @@ public class GameView {
 
     public void displayGameLog(List<Integer> logs) {
         System.out.print("""
-                < 게임 기록 보기 >""");
+                < 게임 기록 보기 >
+                """);
         for (int i = 0; i < logs.size(); i++) {
             System.out.println(i+1 + "번째 게임 : 시도 횟수 - " + logs.get(i));
         }
@@ -45,6 +46,11 @@ public class GameView {
     public void displayGameExit() {System.out.println("< 게임을 종료합니다. >");}
 
     public void displayEndMessage() {
-        System.out.println("정답입니다. 축하합니다!\n");
+        System.out.print("""
+                정답입니다. 축하합니다!
+                홈으로 돌아가시려면 1,
+                이전의 게임기록을 초기화한 후 홈으로 가려면 2,
+                게임을 종료하시려면 3을 입력하세요.
+                """);
     }
 }
