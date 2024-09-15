@@ -1,5 +1,6 @@
 package com.number_baseball.service;
 
+import com.number_baseball.enumeration.Difficulty;
 import com.number_baseball.model.GameModel;
 
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ public class GameService {
         return gameService;
     }
 
-    public void setNewGame() {
-        games.add(new GameModel());
+    public void setNewGame(Difficulty difficulty) {
+        games.add(new GameModel(difficulty));
         current++;
     }
 

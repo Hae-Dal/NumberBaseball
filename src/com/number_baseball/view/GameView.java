@@ -16,6 +16,13 @@ public class GameView {
                 """);
     }
 
+    public void displayDifficultySetting() {
+        System.out.println("""
+                < 난이도를 설정해주세요 >
+                3. 쉬움(답 길이 3) | 4. 보통(답 길이 4) | 5. 어려움(답 길이 5)
+                """);
+    }
+
     public void displayGame() {
         System.out.println("""
                < 게임을 시작합니다 >
