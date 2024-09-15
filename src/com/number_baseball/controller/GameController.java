@@ -1,5 +1,7 @@
 package com.number_baseball.controller;
 
+import com.number_baseball.Exceptions.IllegalInputException;
+import com.number_baseball.enumeration.Difficulty;
 import com.number_baseball.enumeration.InputType;
 import com.number_baseball.enumeration.Status;
 import com.number_baseball.service.GameService;
@@ -26,32 +28,36 @@ public class GameController {
         HashMap<Status, Integer> status;
 
         gv.displayGame();
-        gs.setNewGame();
 
         while (true) {
-            gv.displayInputMessage("숫자를 입력하세요. ");
-            String input = input(ANSWER);
+            try {
+                gv.displayInputMessage("숫자를 입력하세요. ");
+                String input = input(ANSWER);
 
-            if (input == null) {
-                continue;
-            }
-
-            status = isAnswer(input);
-
-            if (status.get(STRIKE) != 3) {
-                gv.displayInputResult(isAnswer(input));
-                gs.addGameTryNum();
-            } else {
-                gv.displayEndMessage();
-                String s = input(MENU);
-                if (Objects.equals(s, "1")) {
-                    break;
-                } else if (Objects.equals(s, "2")) {
-                    gs.removeCurrentGame();
-                } else if (Objects.equals(s, "3")) {
-                    end();
+                if (input == null) {
+                    continue;
                 }
+
+                status = isAnswer(input);
+
+                if (status.get(STRIKE) != gs.getCurrentGame().getDifficulty().getAnswerLength()) {
+                    gv.displayInputResult(isAnswer(input));
+                    gs.addGameTryNum();
+                } else {
+                    gv.displayEndMessage();
+                    String s = input(MENU);
+                    if (Objects.equals(s, "1")) {
+                        break;
+                    } else if (Objects.equals(s, "2")) {
+                        gs.removeCurrentGame();
+                    } else if (Objects.equals(s, "3")) {
+                        end();
+                    }
+                }
+            } catch (IllegalInputException e) {
+                gv.displayException(e);
             }
+
         }
 
     }
@@ -60,15 +66,9 @@ public class GameController {
         Scanner sc = new Scanner(System.in);
 
         String s = sc.next();
+        type.isValid(s);
 
-        try {
-            if (type.isValid(s)) {
-                return s;
-            }
-        } catch (Exception e) {
-            gv.displayException(e);
-        }
-        return null;
+        return s;
     }
 
     public HashMap<Status, Integer> isAnswer(String input) {

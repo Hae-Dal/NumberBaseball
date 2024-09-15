@@ -2,10 +2,12 @@ package com.number_baseball;
 
 import com.number_baseball.Exceptions.IllegalInputException;
 import com.number_baseball.controller.GameController;
+import com.number_baseball.enumeration.Difficulty;
 import com.number_baseball.view.GameView;
 
 import java.util.Scanner;
 
+import static com.number_baseball.enumeration.InputType.DIFFICULTY;
 import static com.number_baseball.enumeration.InputType.MENU;
 
 public class Game {
@@ -18,14 +20,16 @@ public class Game {
     }
 
     public void start() {
-
-        try {
-            while (true) {
+        while (true) {
+            try {
                 gv.displayMenu();
                 String s = gc.input(MENU);
 
                 switch (s) {
                     case "1" : {
+                        gv.displayDifficultySetting();
+                        Difficulty difficulty = Difficulty.valueOf(Integer.parseInt(gc.input(DIFFICULTY)));
+                        difficulty.gameInit();
                         gc.start();
                         break;
                     }
@@ -38,9 +42,9 @@ public class Game {
                         break;
                     }
                 }
+            } catch (Exception e) {
+                gv.displayException(e);
             }
-        } catch (Exception e) {
-            gv.displayException(e);
         }
 
     }
