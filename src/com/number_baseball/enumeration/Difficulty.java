@@ -23,7 +23,7 @@ public enum Difficulty {
 
     public void gameInit() {
         GameService.getInstance().setNewGame(this);
-    };
+    }
 
     public int getAnswerLength() {
         return answerLength;

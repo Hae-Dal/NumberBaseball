@@ -1,7 +1,6 @@
 package com.number_baseball.controller;
 
 import com.number_baseball.Exceptions.IllegalInputException;
-import com.number_baseball.enumeration.Difficulty;
 import com.number_baseball.enumeration.InputType;
 import com.number_baseball.enumeration.Status;
 import com.number_baseball.service.GameService;

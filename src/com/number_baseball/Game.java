@@ -1,11 +1,8 @@
 package com.number_baseball;
 
-import com.number_baseball.Exceptions.IllegalInputException;
 import com.number_baseball.controller.GameController;
 import com.number_baseball.enumeration.Difficulty;
 import com.number_baseball.view.GameView;
-
-import java.util.Scanner;
 
 import static com.number_baseball.enumeration.InputType.DIFFICULTY;
 import static com.number_baseball.enumeration.InputType.MENU;

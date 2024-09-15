@@ -4,11 +4,9 @@ import com.number_baseball.enumeration.Difficulty;
 
 import java.util.Random;
 
-import static com.number_baseball.enumeration.Difficulty.EASY;
-
 public class GameModel {
     private String answer;
-    private final Difficulty difficulty;;
+    private final Difficulty difficulty;
     private int tryNum;
     
     public GameModel(Difficulty difficulty) {
